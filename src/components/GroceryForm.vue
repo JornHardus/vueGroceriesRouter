@@ -17,10 +17,14 @@ form {
 }
 </style>
 <template>
-  <form @submit.prevent="$emit('updateProduct', copyGrocery)">
+  <form
+    @submit.prevent="
+      $emit('updateProduct', copyGrocery), this.$router.push('/')
+    "
+  >
     Product Name: <input type="text" v-model="copyGrocery.Name" /><br />
     Price: <input type="number" step="0.01" v-model="copyGrocery.Price" /><br />
     Quantity: <input type="number" v-model="copyGrocery.Quantity" /><br />
-    <button value="Add Product">Add Product</button>
+    <button>Add Product</button>
   </form>
 </template>

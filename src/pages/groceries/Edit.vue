@@ -20,6 +20,8 @@ const editProduct = () => {
       <input type="number" step="0.01" v-model="groc.Price" />
       <input type="number" step="0.01" v-model="groc.Quantity" />
     </li>
-    <button type="button" @click="editProduct">Confirm Edit</button>
+    <button type="button" @click="editProduct, this.$router.push('/')">
+      Confirm Edit
+    </button>
   </form>
 </template>
