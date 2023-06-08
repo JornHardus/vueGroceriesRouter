@@ -1,27 +1,29 @@
 <script setup>
 // 1. import groceryform
 // 2. maak hier een leeg grocery template
-import { reactive } from "vue";
+import GroceryForm from "/src/components/GroceryForm.vue";
 import { editGrocery } from "/src/store/Groceries.js";
-import groceries from "/src/store/Groceries.js";
+import { getProductById } from "/src/store/Groceries.js";
+import { useRoute } from "vue-router";
 
-const copyGrocery = reactive(Object.assign({}, groceries.value));
+const route = useRoute();
+const prod = route.params.id;
+const getProd = getProductById(prod).value;
 
-const editProduct = () => {
+const edit = {
+  Name: getProd.Name,
+  Price: getProd.Price,
+  Quantity: getProd.Quantity,
+  id: getProd.id,
+};
+
+const editProduct = (y) => {
   // roep je hier de functie aan uit de store die de grocery aanpast
-  editGrocery(copyGrocery);
+  console.log(editGrocery(y));
+  editGrocery(y);
 };
 </script>
 
 <template>
-  <form>
-    <li v-for="groc in copyGrocery">
-      <input type="text" v-model="groc.Name" />
-      <input type="number" step="0.01" v-model="groc.Price" />
-      <input type="number" step="0.01" v-model="groc.Quantity" />
-    </li>
-    <button type="button" @click="editProduct, this.$router.push('/')">
-      Confirm Edit
-    </button>
-  </form>
+  <GroceryForm :grocery="edit" @product-change="editProduct" />
 </template>

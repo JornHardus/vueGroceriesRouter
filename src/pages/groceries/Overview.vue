@@ -2,6 +2,9 @@
 import { computed } from "vue";
 import groceries from "/src/store/Groceries.js";
 import { deleteGrocery } from "/src/store/Groceries.js";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const calculateTotal = computed(() => {
   return groceries.value.reduce(
@@ -12,6 +15,15 @@ const calculateTotal = computed(() => {
 
 const deleteGroc = (groc) => {
   deleteGrocery(groc);
+};
+
+const goToEditPage = (groc) => {
+  router.push({
+    name: "edit",
+    params: {
+      id: groc.id,
+    },
+  });
 };
 </script>
 <style>
@@ -36,6 +48,7 @@ const deleteGroc = (groc) => {
         groc.Name
       }}
     </tr>
+
     <tr>
       Price:
       {{
@@ -46,8 +59,10 @@ const deleteGroc = (groc) => {
     Quantity:
 
     <input type="number" v-model="groc.Quantity" />
-    <button @click="deleteGroc(groc)">Delete</button>
+
     <hr />
+    <button @click="deleteGroc(groc)">Delete</button>
+    <button @click="goToEditPage(groc)">Edit</button>
   </div>
   <td class="header">Total Cost: {{ calculateTotal }} Euro</td>
 </template>

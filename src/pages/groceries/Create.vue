@@ -9,6 +9,7 @@ const newGrocery = {
   Name: "",
   Price: "",
   Quantity: "",
+  id: "",
 };
 
 const add = (groc) => {
@@ -17,5 +18,5 @@ const add = (groc) => {
 </script>
 
 <template>
-  <GroceryForm :grocery="newGrocery" @update-product="add" />
+  <GroceryForm :grocery="newGrocery" @product-change="add" />
 </template>

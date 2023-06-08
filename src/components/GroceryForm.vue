@@ -4,10 +4,9 @@ import { reactive } from "vue";
 // 2. emits definieren
 
 const props = defineProps(["grocery"]);
-const emit = defineEmits(["updateProduct"]);
-const copyGrocery = reactive(Object.assign({}, props.grocery));
 
-// console.log(copyGrocery);
+const emit = defineEmits(["productChange"]);
+const copyGrocery = reactive(Object.assign({}, props.grocery));
 
 // TODO: maak een ref / kopie van de grocery property, en deze kopie v-model je in je template zodat niet de state direct gewijzigd wordt, maar een kopie daarvan
 </script>
@@ -19,12 +18,14 @@ form {
 <template>
   <form
     @submit.prevent="
-      $emit('updateProduct', copyGrocery), this.$router.push('/')
+      $emit('productChange', copyGrocery), this.$router.push('/')
     "
   >
     Product Name: <input type="text" v-model="copyGrocery.Name" /><br />
     Price: <input type="number" step="0.01" v-model="copyGrocery.Price" /><br />
-    Quantity: <input type="number" v-model="copyGrocery.Quantity" /><br />
-    <button>Add Product</button>
+    Quantity:
+    <input type="number" step="0.01" v-model="copyGrocery.Quantity" /><br />
+    <input type="hidden" copyGrocery.id="4" /><br />
+    <button>confirm</button>
   </form>
 </template>
