@@ -25,7 +25,6 @@ form {
     Price: <input type="number" step="0.01" v-model="copyGrocery.Price" /><br />
     Quantity:
     <input type="number" step="0.01" v-model="copyGrocery.Quantity" /><br />
-    <input type="hidden" copyGrocery.id="4" /><br />
     <button>confirm</button>
   </form>
 </template>
