@@ -1,7 +1,7 @@
 <script setup>
 import GroceryForm from "/src/components/GroceryForm.vue";
 import { addGrocery } from "/src/store/Groceries.js";
-
+import groceries from "/src/store/Groceries.js";
 // 1. import groceryform
 // 2. maak hier een leeg grocery template
 
@@ -9,7 +9,7 @@ const newGrocery = {
   Name: "",
   Price: "",
   Quantity: "",
-  id: "",
+  id: groceries.value.length + 1,
 };
 
 const add = (groc) => {
