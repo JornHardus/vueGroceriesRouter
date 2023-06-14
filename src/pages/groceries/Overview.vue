@@ -6,6 +6,7 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
+// TODO: rond totaalprijs af op 2 decimalen
 const calculateTotal = computed(() => {
   return groceries.value.reduce(
     (totalPrice, item) => totalPrice + item.Price * item.Quantity,

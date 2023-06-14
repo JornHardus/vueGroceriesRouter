@@ -7,7 +7,11 @@ import { getProductById } from "/src/store/Groceries.js";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
+// TODO: kies goede naam, bijv. productId
 const prod = route.params.id;
+// TODO: kies goede naam, bijv.: productCopy. Maak direct een deepcopy, zodat edit hier onder weg kan.
+// bijv.: const productCopy = JSON.parse(JSON.stringifygetProductById(prod).value));
+// (deepcopy in form component kan dan weg)
 const getProd = getProductById(prod).value;
 
 const edit = {

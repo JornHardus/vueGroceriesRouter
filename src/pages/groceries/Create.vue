@@ -3,6 +3,7 @@ import GroceryForm from "/src/components/GroceryForm.vue";
 import { addGrocery } from "/src/store/Groceries.js";
 import groceries from "/src/store/Groceries.js";
 
+// TODO: attribuut namen lower case, dus name, price, etc.
 const newGrocery = {
   Name: "",
   Price: "",

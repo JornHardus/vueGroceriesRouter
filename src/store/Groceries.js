@@ -22,5 +22,7 @@ export const editGrocery = (y) =>
     y
   );
 
+// TODO: noem parameter geen i, want dat is een naam die voor loops gebruikt wordt,
+// gebruik liever: item, of: grocery
 export const deleteGrocery = (i) =>
   groceries.value.splice(groceries.value.indexOf(i), 1);

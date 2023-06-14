@@ -15,6 +15,7 @@
   </div>
   <div id="nav">
     <tr>
+      <!-- TODO: gebruik route names ipv url's, is minder foutgevoelig bij toekomstige url-updates -->
       <router-link to="/">-Grocery List</router-link>
     </tr>
     <tr>
